@@ -18,10 +18,9 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         term = self.request.GET.get('term')
-        if not term:
-            guides = self.model.objects.all()
-        else:
-            guides = self.model.objects.filter(title__icontains=term)
+        guides = self.model.objects.filter(approved=True)
+        if term:
+            guides = guides.filter(title__icontains=term)
         return guides
 
 
