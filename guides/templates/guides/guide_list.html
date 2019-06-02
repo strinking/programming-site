@@ -3,7 +3,7 @@
 {% load socialaccount %}
 {% load static %}
 
-{% block og-title %}Programming Discord Server: Guides{% endblock %}
+{% block og-title %}Programming Discord Server: Blog{% endblock %}
 {% block og-description %}Read our member's guides on various topics about programming.{% endblock %}
 {% block head %}
   <link rel="stylesheet" type="text/css" href="{% static 'guides/css/guide_list.css' %}" />
@@ -11,12 +11,11 @@
 {% block body %}
   <br>
   <div class="group">
-    <h2 class="float-left">Guides</h2>
+    <h2 class="float-left">Blog</h2>
     {% if perms.guides.add_guide %}
       <a class="float-right button" href="{% url 'guides:create' %}">Create</a>
     {% endif %}
   </div>
-  <p class="large">Here we collect community-driven guides and tutorials for programming, our server, and more. Want to add something? Feel free to write your own!</p>
   <form action="{% url 'guides:index' %}" method="GET">
       <div class="group">
           <div id="search-key">
@@ -28,7 +27,6 @@
           <br>
       </div>
     </form>
-  <h3>New Guides</h3>
   {% for guide in latest_guides %}
     {% if forloop.first %}
       <ul class="guide-list">
